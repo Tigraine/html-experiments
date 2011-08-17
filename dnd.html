@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Drag & Drop Demo</title>
+		<link href="common.css" rel="stylesheet" type="text/css" media="screen" />
+	</head>
+	<body>
+
+		<p>This demo illustrates a very basic Drag&Drop Sample without any visual feedback during the drag&drop operation</p>
+		<p>Drag any of the green items onto the blue Dropzones to see the effect</p>
+
+		<div class="demo">
+			<div id="dragitems">
+				<div>First Item</div>
+				<div>Second Item</div>
+				<div>Third Item</div>
+			</div>
+
+			<div id="dropzones">
+				<div id="first">First dropzone</div>
+				<div id="second">Second dropzone</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			(function ($) {
+				$(document).ready(function () {
+					$('#dragitems > div')
+						.attr('draggable', 'true')
+						.bind('dragstart', function (evt) {
+							//set the data we want to drag
+							var transfer = evt.originalEvent.dataTransfer;
+							transfer.setData('text', $(this).text());
+							return true;
+						});
+
+					$('#dropzones > div')
+						.bind('dragover', function (evt) {
+							evt.preventDefault();
+						})
+						.bind('drop', function (evt) {
+							//retrieve the data
+							var trans = evt.originalEvent.dataTransfer;
+							alert('Received Drag of: ' + trans.getData('text'));
+						});
+				});
+			}(jQuery));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+.demo {
+	display: box;
+	box-orient: horizontal;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	display: -moz-box;
+	-moz-box-orient: horizontal;
+}
+
+.demo > div {
+	width: 200px;
+	border: 2px solid #c0c0c0;
+	margin: 20px;
+	text-align: center;
+}
+
+div#dragitems > div, div#dropzones > div {
+	border-top: 2px solid #c0c0c0;
+	padding: 4px;
+	background: lightgreen;
+}
+
+div#dragitems > div:first-child, div#dropzones > div:first-child {
+	border: 0;
+}
+
+div#dropzones > div {
+	background: lightblue;
+}
